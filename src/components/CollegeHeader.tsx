@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import collegeLogo from '../assets/images/angel-logo.jpg';
 
 export default function CollegeHeader() {
   const [settings, setSettings] = useState<any>(null);
@@ -19,30 +20,11 @@ export default function CollegeHeader() {
         
         {/* Left Section: Royal Shield Logo */}
         <div className="flex items-center space-x-3 shrink-0">
-          {settings?.collegeLogoUrl ? (
-            <img 
-              src={settings.collegeLogoUrl} 
-              className="w-[100px] h-[100px] object-contain rounded-xl drop-shadow-sm" 
-              alt="College Logo" 
-            />
-          ) : (
-            <svg className="w-14 h-16 sm:w-16 sm:h-20 drop-shadow-sm" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* Shield Outline and Base */}
-              <path d="M10 20 C10 20 50 10 50 10 C50 10 90 20 90 20 C90 20 90 80 50 110 C10 80 10 20 10 20 Z" fill="#1e3a8a" stroke="#1d4ed8" strokeWidth="3" />
-              <path d="M15 24 C15 24 50 15 50 15 C50 15 85 24 85 24 C85 24 85 76 50 103 C15 76 15 24 15 24 Z" fill="#2563eb" opacity="0.3" />
-              
-              {/* Gear Outline in center */}
-              <circle cx="50" cy="55" r="22" stroke="#ffffff" strokeWidth="2" strokeDasharray="6 3" />
-              <circle cx="50" cy="55" r="16" fill="#1e3a8a" stroke="#ffffff" strokeWidth="2" />
-              
-              {/* Inner Ring with Gear/Spokes design */}
-              <circle cx="50" cy="55" r="8" fill="#60a5fa" />
-              <circle cx="50" cy="55" r="4" fill="#ffffff" />
-              
-              {/* Stars or points at top */}
-              <path d="M50 24 L52 29 L57 29 L53 32 L55 37 L50 34 L45 37 L47 32 L43 29 L48 29 Z" fill="#f59e0b" />
-            </svg>
-          )}
+          <img
+            src={settings?.collegeLogoUrl || collegeLogo}
+            className="w-[100px] h-[100px] object-contain rounded-xl drop-shadow-sm"
+              alt="College Logo"
+          />
         </div>
 
         {/* Center Section: College Typography */}
