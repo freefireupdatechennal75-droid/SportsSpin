@@ -104,7 +104,7 @@ function initDatabase(): DatabaseSchema {
           fileUpdated = true;
         }
         if (parsed.settings.collegeLogoUrl === undefined) {
-          parsed.settings.collegeLogoUrl = '/assets/images/angel-logo.jpg';
+          parsed.settings.collegeLogoUrl = '/angel-logo.jpg';
           fileUpdated = true;
         }
         if (parsed.settings.showCaptainDetails === undefined) {
