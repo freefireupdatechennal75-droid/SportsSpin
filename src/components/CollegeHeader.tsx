@@ -3,12 +3,17 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 
 export default function CollegeHeader() {
   const [settings, setSettings] = useState<any>(null);
+  const [logoSrc, setLogoSrc] = useState('/angel-logo.jpg');
 
   useEffect(() => {
     fetch('/api/settings')
       .then(r => r.json())
       .then(data => {
-        if (data.settings) setSettings(data.settings);
+        if (data.settings) {
+          setSettings(data.settings);
+          const nextLogo = data.settings.collegeLogoUrl || '/angel-logo.jpg';
+          setLogoSrc(nextLogo.startsWith('data:') || nextLogo.startsWith('http://') || nextLogo.startsWith('https://') || nextLogo.startsWith('/') ? nextLogo : `/${nextLogo.replace(/^\.?\//, '')}`);
+        }
       })
       .catch(err => console.error("Error loading settings in CollegeHeader:", err));
   }, []);
@@ -20,9 +25,10 @@ export default function CollegeHeader() {
         {/* Left Section: Royal Shield Logo */}
         <div className="flex items-center space-x-3 shrink-0">
           <img
-            src={settings?.collegeLogoUrl || './angel-logo.jpg'}
+            src={logoSrc}
             className="w-[100px] h-[100px] object-contain rounded-xl drop-shadow-sm"
-              alt="College Logo"
+            alt={settings?.collegeName || 'College Logo'}
+            onError={() => setLogoSrc('/angel-logo.jpg')}
           />
         </div>
 

@@ -3,12 +3,17 @@ import { Phone, Mail, MapPin, Award, Shield, Zap, Target, Flame } from 'lucide-r
 
 export default function SportsDayBanner() {
   const [settings, setSettings] = useState<any>(null);
+  const [logoSrc, setLogoSrc] = useState('/angel-logo.jpg');
 
   useEffect(() => {
     fetch('/api/settings')
       .then(r => r.json())
       .then(data => {
-        if (data.settings) setSettings(data.settings);
+        if (data.settings) {
+          setSettings(data.settings);
+          const nextLogo = data.settings.collegeLogoUrl || '/angel-logo.jpg';
+          setLogoSrc(nextLogo.startsWith('data:') || nextLogo.startsWith('http://') || nextLogo.startsWith('https://') || nextLogo.startsWith('/') ? nextLogo : `/${nextLogo.replace(/^\.?\//, '')}`);
+        }
       })
       .catch(err => console.error("Error loading settings in SportsDayBanner:", err));
   }, []);
@@ -31,13 +36,13 @@ export default function SportsDayBanner() {
           
           {/* Left: Shield Logo */}
           <div className="flex items-center space-x-3 shrink-0">
-            {settings?.collegeLogoUrl ? (
-              <img 
-                src={settings.collegeLogoUrl} 
-                className="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded-xl drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" 
-                alt="College Logo" 
-              />
-            ) : (
+            <img 
+              src={logoSrc}
+              className="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded-xl drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" 
+              alt={settings?.collegeName || 'College Logo'}
+              onError={() => setLogoSrc('/angel-logo.jpg')}
+            />
+            {false && (
               <svg className="w-12 h-14 sm:w-14 sm:h-16 drop-shadow-[0_0_10px_rgba(59,130,246,0.3)]" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10 20 C10 20 50 10 50 10 C50 10 90 20 90 20 C90 20 90 80 50 110 C10 80 10 20 10 20 Z" fill="#1e3a8a" stroke="#60a5fa" strokeWidth="3" />
                 <path d="M15 24 C15 24 50 15 50 15 C50 15 85 24 85 24 C85 24 85 76 50 103 C15 76 15 24 15 24 Z" fill="#f59e0b" opacity="0.8" />
