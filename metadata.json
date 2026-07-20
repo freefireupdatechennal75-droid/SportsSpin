@@ -1,0 +1,10 @@
+{
+  "name": "Remix: Remix: Sports Day 2026 – Team Allocation System",
+  "description": "A college Sports Day Team Allocation System with a spinning wheel, balanced team auto-distribution, and admin dashboard.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
