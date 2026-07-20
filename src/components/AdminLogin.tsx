@@ -225,16 +225,7 @@ export default function AdminLogin({ onLoginSuccess, onNavigateToRegister }: Adm
               </button>
             </div>
 
-<<<<<<< HEAD
            
-=======
-            {/* Default Seeded Credentials Notice */}
-            <div className="pt-2 text-center">
-              <span className="inline-block px-3 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 font-medium">
-                🔑 Demo Credentials: <span className="font-bold text-white">Angel</span> / <span className="font-bold text-white">Angel123</span>
-              </span>
-            </div>
->>>>>>> e19f052aa2648a37e11b51455099e04d87634f32
           </form>
         </motion.div>
       </div>
