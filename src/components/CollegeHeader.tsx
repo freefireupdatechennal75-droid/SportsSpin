@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import collegeLogo from '../assets/images/angel-logo.jpg';
 
 export default function CollegeHeader() {
   const [settings, setSettings] = useState<any>(null);
@@ -21,7 +20,7 @@ export default function CollegeHeader() {
         {/* Left Section: Royal Shield Logo */}
         <div className="flex items-center space-x-3 shrink-0">
           <img
-            src={settings?.collegeLogoUrl || collegeLogo}
+            src={settings?.collegeLogoUrl || './angel-logo.jpg'}
             className="w-[100px] h-[100px] object-contain rounded-xl drop-shadow-sm"
               alt="College Logo"
           />
