@@ -1,16 +1,5 @@
-import { useState } from 'react';
-
-// Safely require framer-motion if available; otherwise provide a lightweight fallback
-let motion: any;
-try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  motion = require('framer-motion');
-} catch (e) {
-  // fallback: provide a simple motion.div replacement
-  motion = {
-    div: (props: any) => <div {...props}>{props.children}</div>,
-  };
-}
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Award, ShieldAlert, Lock, User, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import CollegeHeader from './CollegeHeader';
 
@@ -236,7 +225,16 @@ export default function AdminLogin({ onLoginSuccess, onNavigateToRegister }: Adm
               </button>
             </div>
 
+<<<<<<< HEAD
            
+=======
+            {/* Default Seeded Credentials Notice */}
+            <div className="pt-2 text-center">
+              <span className="inline-block px-3 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 font-medium">
+                🔑 Demo Credentials: <span className="font-bold text-white">Angel</span> / <span className="font-bold text-white">Angel123</span>
+              </span>
+            </div>
+>>>>>>> e19f052aa2648a37e11b51455099e04d87634f32
           </form>
         </motion.div>
       </div>
